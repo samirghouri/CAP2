@@ -1,10 +1,9 @@
 FROM ubuntu:latest
 RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
-ADD . /p1.py
-ADD . /test.py
-ADD , /CAP2
-WORKDIR /CAP2
+ADD . /dockercap/app.py
+ADD . /dockercap
+WORKDIR /dockercap
 RUN pip install Flask==1.0.2
-ENTRYPOINT ["python"]
-CMD ["-m unittest test"]
+EXPOSE 8000
+CMD ["python", "app.py"]
